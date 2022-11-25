@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="normalize.css">
+    <script src="login.js" defer></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="bloc1" id="container1">
+
+        <!-- joeurs  -->
+        <div class="bloc1__player" id="bloc2">
+            <p id="j1" class="j1">Player 1</p>
+            <p id="j2" class="j2">Player 2</p>
+        </div>
+
+        <!-- formulaire -->
+        <div class="bloc1__form" id="blocForm">
+            <div class="form__form" id="bloc12">
+                <h1>Player 1 name</h1>
+                <form id="form">
+                    <input type="text" id="pseudo" required maxlength="8" />
+                    <button type="submit" id="submitBtn"> Send ! </button>
+                </form>
+            </div>
+
+            <div class="form__form" id="bloc13">
+                <h1>Player 2 name</h1>
+                <form id="form2">
+                    <input type="text" id="pseudo2" required maxlength="8" />
+                    <button type="submit" id="submitBtn"> Send ! </button>
+                </form>
+            </div>
+
+            <!-- bouton start -->
+            <button id="start" class="form__startbtn">Start !</button>
+        </div>
+
+        <!-- mise de départ  -->
+        <div class="bloc1__mise none" id="blocBet">
+            <h1 id="betTitle">Choose your bet</h1>
+            <div class="numbers " id="number1">1</div>
+            <div class="numbers " id="number2">2</div>
+            <div class="numbers " id="number3">3</div>
+            <div class="numbers " id="number4">4</div>
+            <div class="numbers " id="number5">5</div>
+            <button class="validateBtn" id="validateBtn">Validate</button>
+            <button class="validateBtn none" id="validateBtn2">Validate</button>
+
+        </div>
+
+        <!-- affichage des mises  -->
+        <div class="none betContainer" id="showBet">
+            <div id="betj1" class="betBox"></div>
+            <div id="betj2" class="betBox"></div>
+        </div>
+
+    </div>
+</body>
+
+</html>
