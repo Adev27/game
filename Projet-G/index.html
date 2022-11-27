@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="normalize.css">
     <script src="login.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 
@@ -16,27 +20,30 @@
 
         <!-- joeurs  -->
         <div class="bloc1__player" id="bloc2">
-            <p id="j1" class="j1">Player 1</p>
-            <p id="j2" class="j2">Player 2</p>
+            <p id="j1" class="j1"></p>
+            <p id="j2" class="j2"></p>
         </div>
 
         <!-- formulaire -->
         <div class="bloc1__form" id="blocForm">
             <div class="form__form" id="bloc12">
-                <h1>Player 1 name</h1>
+                <h1>Player names</h1>
                 <form id="form">
+                    <label for="pseudo">Player 1</label>
                     <input type="text" id="pseudo" required maxlength="8" />
+                    <label for="pseudo2">Player 2</label>
+                    <input type="text" id="pseudo2" required maxlength="8" />
                     <button type="submit" id="submitBtn"> Send ! </button>
                 </form>
             </div>
 
-            <div class="form__form" id="bloc13">
+            <!-- <div class="form__form" id="bloc13">
                 <h1>Player 2 name</h1>
                 <form id="form2">
                     <input type="text" id="pseudo2" required maxlength="8" />
                     <button type="submit" id="submitBtn"> Send ! </button>
                 </form>
-            </div>
+            </div> -->
 
             <!-- bouton start -->
             <button id="start" class="form__startbtn">Start !</button>
@@ -45,11 +52,13 @@
         <!-- mise de départ  -->
         <div class="bloc1__mise none" id="blocBet">
             <h1 id="betTitle">Choose your bet</h1>
-            <div class="numbers " id="number1">1</div>
-            <div class="numbers " id="number2">2</div>
-            <div class="numbers " id="number3">3</div>
-            <div class="numbers " id="number4">4</div>
-            <div class="numbers " id="number5">5</div>
+            <div class="numbersBloc">
+                <div class="numbers " id="number1">1</div>
+                <div class="numbers " id="number2">2</div>
+                <div class="numbers " id="number3">3</div>
+                <div class="numbers " id="number4">4</div>
+                <div class="numbers " id="number5">5</div>
+            </div>
             <button class="validateBtn" id="validateBtn">Validate</button>
             <button class="validateBtn none" id="validateBtn2">Validate</button>
 
