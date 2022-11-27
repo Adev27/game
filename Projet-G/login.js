@@ -4,6 +4,8 @@
 let submit = (event) => {
   j1.innerHTML = `${pseudo.value}`;
   pseudo1Check = true;
+  j2.innerHTML = `${pseudo2.value}`;
+  pseudo2Check = true;
   event.preventDefault();
 };
 
@@ -11,26 +13,29 @@ const form = document.getElementById('form');
 let j1 = document.getElementById('j1');
 let pseudo = document.getElementById('pseudo');
 let joueur1 = pseudo.value
+let j2 = document.getElementById('j2');
+let pseudo2 = document.getElementById('pseudo2');
+let joueur2 = pseudo2.value
 
 form.addEventListener('submit', submit);
 
 
 
-//formulaire 2 
+// //formulaire 2 
 
 
-let submit2 = (event) => {
-  j2.innerHTML = `${pseudo2.value}`;
-  pseudo2Check = true;
-  event.preventDefault();
-};
+// // let submit2 = (event) => {
+// //   j2.innerHTML = `${pseudo2.value}`;
+// //   pseudo2Check = true;
+// //   event.preventDefault();
+// // };
 
-const form2 = document.getElementById('form2');
-let j2 = document.getElementById('j2');
-let pseudo2 = document.getElementById('pseudo2');
-let joueur2 = pseudo2.value
+// const form2 = document.getElementById('form2');
+// // let j2 = document.getElementById('j2');
+// // let pseudo2 = document.getElementById('pseudo2');
+// // let joueur2 = pseudo2.value
 
-form2.addEventListener('submit', submit2);
+// form2.addEventListener('submit', submit2);
 
 
 
@@ -205,6 +210,35 @@ let randomPlayer = () => {
 
 let number = "";
 let randomnumber = (min, max) => {
-  console.log("yes");
+  console.log("nombre aléatoire :");
   number = Math.floor(Math.random() * (max - min) + min);
 };
+
+//jeu 
+
+let cardArray =[];
+class cards {
+  constructor(name,value) {
+    this.name = name;
+    this.value = value; 
+  }
+}
+
+let card1 = new cards ("card1", true);
+let card2 = new cards ("card2", true);
+let card3 = new cards ("card3", false);
+let card4 = new cards ("card4", true);
+let card5 = new cards ("card5", true);
+let card6 = new cards ("card6", true);
+let card7 = new cards ("card7", true);
+let card8 = new cards ("card8", true);
+let card9 = new cards ("card9", true);
+let card10 = new cards ("card10", true);
+
+cardArray.push(card1,card2,card3,card4,card5,card6,card7,card8,card9,card10);
+console.log(cardArray);
+
+let cardPick =() => {
+  randomnumber(0,9);
+  console.log(number);
+}
