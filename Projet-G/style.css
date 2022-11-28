@@ -262,6 +262,7 @@ input:focus-visible {
 }
 
 /*container mises afficher*/
+
 .betContainer {
   display: flex;
   flex-direction: row;
@@ -283,4 +284,226 @@ input:focus-visible {
   background-color: #d9d5d7;
   font-size: 1.3em;
   box-shadow: 0px 0px 10px 0px #50d8d7;
+}
+
+.cardContainer {
+  width: 100%;
+  height: 100%;
+  background-color: #1c3738;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/*affichage des cartes */
+
+.cardsDeck {
+  width: 40%;
+  height: 45%;
+  background-color: #547aa5;
+  border: 4px solid white;
+  border-style: inset;
+  margin-bottom: 60%;
+  margin-left: 5%;
+  border-radius: 10px;
+  z-index: 10;
+}
+
+.cardsDeck2 {
+  width: 40%;
+  height: 45%;
+  background-color: #547aa5;
+  border: 4px solid white;
+  border-style: inset;
+  margin-bottom: 60%;
+  margin-left: -95%;
+  border-radius: 10px;
+  position: relative;
+  z-index: 9;
+}
+
+.cardsDeck3 {
+  width: 40%;
+  height: 45%;
+  background-color: #547aa5;
+  border: 4px solid white;
+  border-style: inset;
+  margin-bottom: 60%;
+  margin-left: -95%;
+  border-radius: 10px;
+  position: relative;
+  z-index: 8;
+}
+
+.cardsDeck4 {
+  width: 40%;
+  height: 45%;
+  background-color: #547aa5;
+  border: 4px solid white;
+  border-style: inset;
+  margin-bottom: 60%;
+  margin-left: -95%;
+  border-radius: 10px;
+  position: relative;
+  z-index: 7;
+}
+
+.cardsDeck5 {
+  width: 40%;
+  height: 45%;
+  background-color: #547aa5;
+  border: 4px solid white;
+  border-style: inset;
+  margin-bottom: 60%;
+  margin-left: -95%;
+  border-radius: 10px;
+  position: relative;
+  z-index: 6;
+}
+
+.cardsDeck6 {
+  width: 40%;
+  height: 45%;
+  background-color: #547aa5;
+  border: 4px solid white;
+  border-style: inset;
+  margin-bottom: 60%;
+  margin-left: -95%;
+  border-radius: 10px;
+  position: relative;
+  z-index: 5;
+}
+
+.cardsDeck7 {
+  width: 40%;
+  height: 45%;
+  background-color: #547aa5;
+  border: 4px solid white;
+  border-style: inset;
+  margin-bottom: 60%;
+  margin-left: -95%;
+  border-radius: 10px;
+  position: relative;
+  z-index: 4;
+}
+
+.cardsDeck8 {
+  width: 40%;
+  height: 45%;
+  background-color: #547aa5;
+  border: 4px solid white;
+  border-style: inset;
+  margin-bottom: 60%;
+  margin-left: -95%;
+  border-radius: 10px;
+  position: relative;
+  z-index: 3;
+}
+
+.cardsDeck9 {
+  width: 40%;
+  height: 45%;
+  background-color: #547aa5;
+  border: 4px solid white;
+  border-style: inset;
+  margin-bottom: 60%;
+  margin-left: -95%;
+  border-radius: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+.cardsDeck10 {
+  width: 40%;
+  height: 45%;
+  background-color: #547aa5;
+  border: 4px solid white;
+  border-style: inset;
+  margin-bottom: 60%;
+  margin-left: -95%;
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.cardContainer img {
+  border-style: none;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  animation: opacity 1.2s forwards;
+}
+
+@-webkit-keyframes opacity {
+  0% {
+    -webkit-opacity: 0;
+    opacity: 0;
+  }
+  50% {
+    -webkit-opacity: 0;
+    opacity: 0;
+  }
+  100% {
+    -webkit-opacity: 1;
+    opacity: 1;
+  }
+}
+
+@keyframes opacity {
+  0% {
+    -webkit-opacity: 0;
+    opacity: 0;
+  }
+  50% {
+    -webkit-opacity: 0;
+    opacity: 0;
+  }
+  100% {
+    -webkit-opacity: 1;
+    opacity: 1;
+  }
+}
+
+.cardsPlayed {
+  width: 35%;
+  height: 40%;
+  border: 5px solid #50d8d7;
+  margin-bottom: 60%;
+  border-radius: 10px;
+}
+
+.cardsDeckFlip {
+  -webkit-animation: flip-vertical-right 1s
+    cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+  animation: flip-vertical-right 1s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+    forwards;
+}
+
+@-webkit-keyframes flip-vertical-right {
+  0% {
+    /* -webkit-transform: rotateY(0);
+    transform: rotateY(0); */
+    -webkit-transform: translateX(0) rotateY(0);
+    transform: translateX(0) rotateY(0);
+  }
+  100% {
+    /* -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg); */
+    -webkit-transform: translateX(120%) rotateY(180deg);
+    transform: translateX(120%) rotateY(180deg);
+  }
+}
+@keyframes flip-vertical-right {
+  0% {
+    /* -webkit-transform: rotateY(0);
+    transform: rotateY(0); */
+    -webkit-transform: translateX(0) rotateY(0);
+    transform: translateX(0) rotateY(0);
+  }
+  100% {
+    /* -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg); */
+    -webkit-transform: translateX(120%) rotateY(180deg);
+    transform: translateX(120%) rotateY(180deg);
+  }
 }
