@@ -176,6 +176,7 @@ let validationBet2 = () => {
   document.getElementById('j2').classList.remove('player2Select');
   showBet();
   randomPlayer();
+  showCard();
 
 }
 
@@ -194,51 +195,258 @@ let showBet = () => {
   document.getElementById('betj2').innerHTML = `${j2Bet}`;
 };
 
+let showCard = () => {
+  document.getElementById('cards').classList.remove('none');
+}
+
 
 //calcul joueur aléatoire
+
+let firstPlayer = "";
 
 let randomPlayer = () => {
   randomnumber(1, 20);
   if (number < 10) {
     document.getElementById('j1').classList.add('player1Select')
+    firstPlayer = 'j1';
   } else if (number > 10) {
     document.getElementById('j2').classList.add('player2Select')
-  }else{
+    firstPlayer ='j2';
+  } else {
     randomPlayer();
   }
 };
 
 let number = "";
 let randomnumber = (min, max) => {
-  console.log("nombre aléatoire :");
+  // console.log("nombre aléatoire :");
   number = Math.floor(Math.random() * (max - min) + min);
 };
 
-//jeu 
+//calcul tirage de carte 
 
-let cardArray =[];
+let cardArray = [];
 class cards {
-  constructor(name,value) {
+  constructor(name, value, type) {
     this.name = name;
-    this.value = value; 
+    this.value = value;
+    this.type = type;
   }
 }
 
-let card1 = new cards ("card1", true);
-let card2 = new cards ("card2", true);
-let card3 = new cards ("card3", false);
-let card4 = new cards ("card4", true);
-let card5 = new cards ("card5", true);
-let card6 = new cards ("card6", true);
-let card7 = new cards ("card7", true);
-let card8 = new cards ("card8", true);
-let card9 = new cards ("card9", true);
-let card10 = new cards ("card10", true);
+let card1 = new cards("card1", true, "alive");
+let card2 = new cards("card2", true, "alive");
+let card3 = new cards("card3", true, "alive");
+let card4 = new cards("card4", true, "alive");
+let card5 = new cards("card5", true, "alive");
+let card6 = new cards("card6", true, "alive");
+let card7 = new cards("card7", true, "alive");
+let card8 = new cards("card8", true, "alive");
+let card9 = new cards("card9", true, "alive");
+let card10 = new cards("card10", true, "bullet");
 
-cardArray.push(card1,card2,card3,card4,card5,card6,card7,card8,card9,card10);
+cardArray.push(card1, card2, card3, card4, card5, card6, card7, card8, card9, card10);
 console.log(cardArray);
 
-let cardPick =() => {
-  randomnumber(0,9);
-  console.log(number);
+let cardSelected = "";
+let cardNumberCheck = "";
+let cardName = "";
+
+let cardNumber = () => {
+  randomnumber(0, cardArray.length);
+  // console.log(number);
+  cardSelected = cardArray[number];
+
+  if (cardSelected.value) {
+    // console.log("carte valide")
+    cardSelected.value = false;
+    cardNumberCheck++;
+    cardName = cardSelected.name;
+    // console.log(`nombre boucle = ${cardNumberCheck}`);
+  } else if (cardNumberCheck < 10) {
+    // console.log("carte invalide");
+    cardNumber();
+  } else {
+    cardName = false;
+  }
+};
+
+let j1Lifes = 3;
+let j2Lifes = 3;
+let bullet = document.getElementsByClassName("balle");
+let actualPlayer ="";
+
+let cardPick = () => {
+  cardNumber();
+  console.log(cardName);
+  if (cardSelected.type === "bullet") {
+    return true
+  } else {
+    return false
+  }
 }
+
+let playerBetModif = () => {
+  if (firstPlayer === "j1" || actualPlayer === "j1"){
+    actualPlayer = "j1";
+    firstPlayer = "";
+    j1Bet--;
+    document.getElementById('betj1').innerHTML =`${j1Bet}`;
+  }else {
+    actualPlayer = "j2";
+    j2Bet--;
+    document.getElementById('betj2').innerHTML =`${j2Bet}`;
+  }
+}
+
+let nextPlayer = () => {
+  if (actualPlayer === "j1") {
+    document.getElementById('j1').classList.remove('player1Select');
+    document.getElementById('j2').classList.add('player2Select');
+    actualPlayer = "j2"
+  } else {
+    document.getElementById('j2').classList.remove('player2Select');
+    document.getElementById('j1').classList.add('player1Select');
+    actualPlayer = "j1"
+  }
+  
+}
+
+document.getElementById('cardsDeck1').addEventListener("click", () => {
+  document.getElementById('cardsDeck1').classList.add('cardsDeckFlip');
+  if (cardPick()) {
+    document.getElementById('balle1').classList.remove('none');
+  } else {
+    console.log("alive");
+  };
+
+  playerBetModif();
+  nextPlayer();
+
+});
+
+document.getElementById('cardsDeck2').addEventListener("click", () => {
+  document.getElementById('cardsDeck2').classList.add('cardsDeckFlip');
+  document.getElementById('cardsDeck2').style.zIndex = "10";
+  if (cardPick()) {
+    document.getElementById('balle2').classList.remove('none');
+  } else {
+    console.log("alive");
+  };
+
+  playerBetModif();
+  nextPlayer();
+
+});
+
+document.getElementById('cardsDeck3').addEventListener("click", () => {
+  document.getElementById('cardsDeck3').classList.add('cardsDeckFlip');
+  document.getElementById('cardsDeck3').style.zIndex = "10";
+  if (cardPick()) {
+    document.getElementById('balle3').classList.remove('none');
+  } else {
+    console.log("alive");
+  };
+
+  playerBetModif();
+  nextPlayer();
+
+});
+
+document.getElementById('cardsDeck4').addEventListener("click", () => {
+  document.getElementById('cardsDeck4').classList.add('cardsDeckFlip');
+  document.getElementById('cardsDeck4').style.zIndex = "10";
+  if (cardPick()) {
+    document.getElementById('balle4').classList.remove('none');
+  } else {
+    console.log("alive");
+  };
+
+  playerBetModif();
+  nextPlayer();
+
+});
+
+document.getElementById('cardsDeck5').addEventListener("click", () => {
+  document.getElementById('cardsDeck5').classList.add('cardsDeckFlip');
+  document.getElementById('cardsDeck5').style.zIndex = "10";
+  if (cardPick()) {
+    document.getElementById('balle5').classList.remove('none');
+  } else {
+    console.log("alive");
+  };
+
+  playerBetModif();
+  nextPlayer();
+
+});
+
+document.getElementById('cardsDeck6').addEventListener("click", () => {
+  document.getElementById('cardsDeck6').classList.add('cardsDeckFlip');
+  document.getElementById('cardsDeck6').style.zIndex = "10";
+  if (cardPick()) {
+    document.getElementById('balle6').classList.remove('none');
+  } else {
+    console.log("alive");
+  };
+
+  playerBetModif();
+  nextPlayer();
+
+});
+
+document.getElementById('cardsDeck7').addEventListener("click", () => {
+  document.getElementById('cardsDeck7').classList.add('cardsDeckFlip');
+  document.getElementById('cardsDeck7').style.zIndex = "10";
+  if (cardPick()) {
+    document.getElementById('balle7').classList.remove('none');
+  } else {
+    console.log("alive");
+  };
+
+  playerBetModif();
+  nextPlayer();
+
+});
+
+document.getElementById('cardsDeck8').addEventListener("click", () => {
+  document.getElementById('cardsDeck8').classList.add('cardsDeckFlip');
+  document.getElementById('cardsDeck8').style.zIndex = "10";
+  if (cardPick()) {
+    document.getElementById('balle8').classList.remove('none');
+  } else {
+    console.log("alive");
+  };
+
+  playerBetModif();
+  nextPlayer();
+
+});
+
+document.getElementById('cardsDeck9').addEventListener("click", () => {
+  document.getElementById('cardsDeck9').classList.add('cardsDeckFlip');
+  document.getElementById('cardsDeck9').style.zIndex = "10";
+  if (cardPick()) {
+    document.getElementById('balle9').classList.remove('none');
+  } else {
+    console.log("alive");
+  };
+
+  playerBetModif();
+  nextPlayer();
+
+});
+
+document.getElementById('cardsDeck10').addEventListener("click", () => {
+  document.getElementById('cardsDeck10').classList.add('cardsDeckFlip');
+  document.getElementById('cardsDeck10').style.zIndex = "10";
+  if (cardPick()) {
+    document.getElementById('balle10').classList.remove('none');
+  } else {
+    console.log("alive");
+  };
+
+  playerBetModif();
+  nextPlayer();
+
+});
