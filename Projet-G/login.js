@@ -343,6 +343,14 @@ let gameMain = () => {
     };
   };
 
+  let endRound2 = () => {
+    
+    if (j1Bet > 0 || j2Bet >0) {
+    }else {
+      alert("terminé")
+    }
+  };
+
 
 
 
@@ -355,7 +363,7 @@ let gameMain = () => {
       endRound();
     } else {
       playerBetModif();
-
+    setTimeout(endRound2,2000);
       nextPlayer();
     };
 
@@ -369,6 +377,7 @@ let gameMain = () => {
       endRound();
     } else {
       playerBetModif();
+    setTimeout(endRound2,2000);
       nextPlayer();
     };
 
@@ -382,6 +391,7 @@ let gameMain = () => {
       endRound();
     } else {
       playerBetModif();
+    setTimeout(endRound2,2000);
       nextPlayer();
     };
   });
@@ -394,6 +404,7 @@ let gameMain = () => {
       endRound();
     } else {
       playerBetModif();
+    setTimeout(endRound2,2000);
       nextPlayer();
     };
   });
@@ -406,6 +417,7 @@ let gameMain = () => {
       endRound();
     } else {
       playerBetModif();
+    setTimeout(endRound2,2000);
       nextPlayer();
     };
   });
@@ -418,6 +430,7 @@ let gameMain = () => {
       endRound();
     } else {
       playerBetModif();
+      setTimeout(endRound2,2000);
       nextPlayer();
     };
   });
@@ -430,6 +443,7 @@ let gameMain = () => {
       endRound();
     } else {
       playerBetModif();
+    setTimeout(endRound2,2000);
       nextPlayer();
     };
   });
@@ -442,6 +456,7 @@ let gameMain = () => {
       endRound();
     } else {
       playerBetModif();
+    setTimeout(endRound2,2000);
       nextPlayer();
     };
   });
@@ -454,6 +469,7 @@ let gameMain = () => {
       endRound();
     } else {
       playerBetModif();
+    setTimeout(endRound2,2000);
       nextPlayer();
     };
   });
@@ -466,6 +482,7 @@ let gameMain = () => {
       endRound();
     } else {
       playerBetModif();
+    setTimeout(endRound2,2000);
       nextPlayer();
     };
   });
