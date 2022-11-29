@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/36db748ff7.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 
@@ -22,6 +23,27 @@
         <div class="bloc1__player" id="bloc2">
             <p id="j1" class="j1"></p>
             <p id="j2" class="j2"></p>
+        </div>
+
+        <!-- affichage des mises  -->
+        <div class="none betContainer" id="showBet">
+            <div id="betj1" class="betBox"></div>
+            <div id="betj2" class="betBox"></div>
+        </div>
+
+        <!-- vies -->
+        <div class="hearts none" id="hearts">
+            <div class="heartP" id="heartP1">
+                <i class="fa-solid fa-heart" id="heartP11"></i>
+                <i class="fa-solid fa-heart" id="heartP12"></i>
+                <i class="fa-solid fa-heart" id="heartP13"></i>
+            </div>
+
+            <div class="heartP" id="heartP2">
+                <i class="fa-solid fa-heart" id="heartP21"></i>
+                <i class="fa-solid fa-heart" id="heartP22"></i>
+                <i class="fa-solid fa-heart" id="heartP23"></i>
+            </div>
         </div>
 
         <!-- formulaire -->
@@ -36,14 +58,6 @@
                     <button type="submit" id="submitBtn"> Send ! </button>
                 </form>
             </div>
-
-            <!-- <div class="form__form" id="bloc13">
-                <h1>Player 2 name</h1>
-                <form id="form2">
-                    <input type="text" id="pseudo2" required maxlength="8" />
-                    <button type="submit" id="submitBtn"> Send ! </button>
-                </form>
-            </div> -->
 
             <!-- bouton start -->
             <button id="start" class="form__startbtn">Start !</button>
@@ -64,11 +78,6 @@
 
         </div>
 
-        <!-- affichage des mises  -->
-        <div class="none betContainer" id="showBet">
-            <div id="betj1" class="betBox"></div>
-            <div id="betj2" class="betBox"></div>
-        </div>
 
         <!-- cartes -->
 
@@ -103,6 +112,10 @@
 
             <a class="cardsDeck10" href="#" id="cardsDeck10">
                 <img src="../Projet-G/images/balle.png" alt="" id="balle10" class="none balle"></a>
+        </div>
+
+        <div class="nextRoundBtn none avoidClick" id="nextRoundBtn">
+            <button class="" id="btnNextRound">Next round</button>
         </div>
     </div>
 </body>
