@@ -301,13 +301,13 @@ let gameMain = () => {
   let playerStatut = true;
 
   let numberBetCheck = () => {
-    if (j1Bet < 1 || j2Bet < 1){
+    if (j1Bet < 1 || j2Bet < 1) {
       playerStatut = false;
     }
   };
 
   let nextPlayer = () => {
-    if(playerStatut) {
+    if (playerStatut) {
       if (actualPlayer === "j1") {
         document.getElementById('j1').classList.remove('player1Select');
         document.getElementById('j2').classList.add('player2Select');
@@ -317,7 +317,7 @@ let gameMain = () => {
         document.getElementById('j1').classList.add('player1Select');
         actualPlayer = "j1"
       }
-    } else{
+    } else {
       console.log('bienjoué');
     }
     numberBetCheck();
@@ -344,9 +344,9 @@ let gameMain = () => {
   };
 
   let endRound2 = () => {
-    
-    if (j1Bet > 0 || j2Bet >0) {
-    }else {
+
+    if (j1Bet > 0 || j2Bet > 0) {
+    } else {
       alert("terminé")
     }
   };
@@ -356,133 +356,143 @@ let gameMain = () => {
 
   // events click sur les cartes 
 
-  document.getElementById('cardsDeck1').addEventListener("click", () => {
-    document.getElementById('cardsDeck1').classList.add('cardsDeckFlip', "avoidClick");
+  document.getElementById('cardWrapper1').addEventListener("click", () => {
+    document.getElementById('cardWrapper1').classList.add('card-wrapper-anim', "avoidClick");
+    document.getElementById('card1').classList.add('cardAnim');
     if (cardPick()) {
       document.getElementById('balle1').classList.remove('none');
       endRound();
     } else {
       playerBetModif();
-    setTimeout(endRound2,2000);
+      setTimeout(endRound2, 2000);
       nextPlayer();
     };
 
   });
 
-  document.getElementById('cardsDeck2').addEventListener("click", () => {
-    document.getElementById('cardsDeck2').classList.add('cardsDeckFlip', "avoidClick");
-    document.getElementById('cardsDeck2').style.zIndex = "10";
+  document.getElementById('cardWrapper2').addEventListener("click", () => {
+    document.getElementById('cardWrapper2').classList.add('card-wrapper-anim', "avoidClick");
+    document.getElementById('card2').classList.add('cardAnim');
+    document.getElementById('cardWrapper2').style.zIndex = "10";
     if (cardPick()) {
       document.getElementById('balle2').classList.remove('none');
       endRound();
     } else {
       playerBetModif();
-    setTimeout(endRound2,2000);
+      setTimeout(endRound2, 2000);
       nextPlayer();
     };
 
   });
 
-  document.getElementById('cardsDeck3').addEventListener("click", () => {
-    document.getElementById('cardsDeck3').classList.add('cardsDeckFlip', "avoidClick");
-    document.getElementById('cardsDeck3').style.zIndex = "10";
+  document.getElementById('cardWrapper3').addEventListener("click", () => {
+    document.getElementById('cardWrapper3').classList.add('card-wrapper-anim', "avoidClick");
+    document.getElementById('card3').classList.add('cardAnim');
+    document.getElementById('cardWrapper3').style.zIndex = "10";
     if (cardPick()) {
       document.getElementById('balle3').classList.remove('none');
       endRound();
     } else {
       playerBetModif();
-    setTimeout(endRound2,2000);
+      setTimeout(endRound2, 2000);
       nextPlayer();
     };
   });
 
-  document.getElementById('cardsDeck4').addEventListener("click", () => {
-    document.getElementById('cardsDeck4').classList.add('cardsDeckFlip', "avoidClick");
-    document.getElementById('cardsDeck4').style.zIndex = "10";
+  document.getElementById('cardWrapper4').addEventListener("click", () => {
+    document.getElementById('cardWrapper4').classList.add('card-wrapper-anim', "avoidClick");
+    document.getElementById('card4').classList.add('cardAnim');
+    document.getElementById('cardWrapper4').style.zIndex = "10";
     if (cardPick()) {
       document.getElementById('balle4').classList.remove('none');
       endRound();
     } else {
       playerBetModif();
-    setTimeout(endRound2,2000);
+      setTimeout(endRound2, 2000);
       nextPlayer();
     };
   });
 
-  document.getElementById('cardsDeck5').addEventListener("click", () => {
-    document.getElementById('cardsDeck5').classList.add('cardsDeckFlip', "avoidClick");
-    document.getElementById('cardsDeck5').style.zIndex = "10";
+  document.getElementById('cardWrapper5').addEventListener("click", () => {
+    document.getElementById('cardWrapper5').classList.add('card-wrapper-anim', "avoidClick");
+    document.getElementById('card5').classList.add('cardAnim');
+    document.getElementById('cardWrapper5').style.zIndex = "10";
     if (cardPick()) {
       document.getElementById('balle5').classList.remove('none');
       endRound();
     } else {
       playerBetModif();
-    setTimeout(endRound2,2000);
+      setTimeout(endRound2, 2000);
       nextPlayer();
     };
   });
 
-  document.getElementById('cardsDeck6').addEventListener("click", () => {
-    document.getElementById('cardsDeck6').classList.add('cardsDeckFlip', "avoidClick");
-    document.getElementById('cardsDeck6').style.zIndex = "10";
+  document.getElementById('cardWrapper6').addEventListener("click", () => {
+    document.getElementById('cardWrapper6').classList.add('card-wrapper-anim', "avoidClick");
+    document.getElementById('card6').classList.add('cardAnim');
+    document.getElementById('cardWrapper6').style.zIndex = "10";
     if (cardPick()) {
       document.getElementById('balle6').classList.remove('none');
       endRound();
     } else {
       playerBetModif();
-      setTimeout(endRound2,2000);
+      setTimeout(endRound2, 2000);
       nextPlayer();
     };
   });
 
-  document.getElementById('cardsDeck7').addEventListener("click", () => {
-    document.getElementById('cardsDeck7').classList.add('cardsDeckFlip', "avoidClick");
-    document.getElementById('cardsDeck7').style.zIndex = "10";
+  document.getElementById('cardWrapper7').addEventListener("click", () => {
+    document.getElementById('cardWrapper7').classList.add('card-wrapper-anim', "avoidClick");
+    document.getElementById('card7').classList.add('cardAnim');
+    document.getElementById('cardWrapper7').style.zIndex = "10";
     if (cardPick()) {
       document.getElementById('balle7').classList.remove('none');
       endRound();
     } else {
       playerBetModif();
-    setTimeout(endRound2,2000);
+      setTimeout(endRound2, 2000);
       nextPlayer();
     };
   });
 
-  document.getElementById('cardsDeck8').addEventListener("click", () => {
-    document.getElementById('cardsDeck8').classList.add('cardsDeckFlip', "avoidClick");
-    document.getElementById('cardsDeck8').style.zIndex = "10";
+  document.getElementById('cardWrapper8').addEventListener("click", () => {
+    document.getElementById('cardWrapper8').classList.add('card-wrapper-anim', "avoidClick");
+    document.getElementById('card8').classList.add('cardAnim');
+    document.getElementById('cardWrapper8').style.zIndex = "10";
     if (cardPick()) {
       document.getElementById('balle8').classList.remove('none');
       endRound();
     } else {
       playerBetModif();
-    setTimeout(endRound2,2000);
+      setTimeout(endRound2, 2000);
       nextPlayer();
     };
   });
 
-  document.getElementById('cardsDeck9').addEventListener("click", () => {
-    document.getElementById('cardsDeck9').classList.add('cardsDeckFlip', "avoidClick");
-    document.getElementById('cardsDeck9').style.zIndex = "10";
+  document.getElementById('cardWrapper9').addEventListener("click", () => {
+    document.getElementById('cardWrapper9').classList.add('card-wrapper-anim', "avoidClick");
+    document.getElementById('card9').classList.add('cardAnim');
+    document.getElementById('cardWrapper9').style.zIndex = "10";
     if (cardPick()) {
       document.getElementById('balle9').classList.remove('none');
       endRound();
     } else {
       playerBetModif();
-    setTimeout(endRound2,2000);
+      setTimeout(endRound2, 2000);
       nextPlayer();
     };
   });
 
-  document.getElementById('cardsDeck10').addEventListener("click", () => {
-    document.getElementById('cardsDeck10').classList.add('cardsDeckFlip', "avoidClick");
-    document.getElementById('cardsDeck10').style.zIndex = "10";
+  document.getElementById('cardWrapper10').addEventListener("click", () => {
+    document.getElementById('cardWrapper10').classList.add('card-wrapper-anim', "avoidClick");
+    document.getElementById('card10').classList.add('cardAnim');
+    document.getElementById('cardWrapper10').style.zIndex = "10";
     if (cardPick()) {
       document.getElementById('balle10').classList.remove('none');
       endRound();
     } else {
       playerBetModif();
-    setTimeout(endRound2,2000);
+      setTimeout(endRound2, 2000);
       nextPlayer();
     };
   });
