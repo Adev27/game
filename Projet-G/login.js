@@ -7,6 +7,8 @@ let submit = (event) => {
   j2.innerHTML = `${pseudo2.value}`;
   pseudo2Check = true;
   event.preventDefault();
+  document.getElementById('j1').classList.add('player1Select');
+  document.getElementById('j2').classList.add('player2Select');
 };
 
 const form = document.getElementById('form');
@@ -47,8 +49,10 @@ let showNumbers = () => {
 };
 
 let playerNumber = () => {
+  document.getElementById('j2').classList.remove('player2Select');
   document.getElementById('betTitle').classList.add('chooseYourBet1');
   document.getElementById('j1').classList.add('player1Select');
+
 };
 
 
