@@ -1,194 +1,643 @@
-<!DOCTYPE html>
-<html lang="en">
+@font-face {
+  font-family: "Sanek-Regular";
+  src: url(./Fonts/Sanek-Regular.otf);
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="normalize.css">
-    <script src="login.js" defer></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/36db748ff7.js" crossorigin="anonymous"></script>
-    <title>Document</title>
-</head>
+* {
+  font-family: "Sanek-Regular";
+  --chestnut: #9d4931ff;
+  --brown-sugar: #b9714bff;
+  --cambridge-blue: #a7c4b0ff;
+  --timberwolf: #ccc8bcff;
+  --xanadu: #1c3738;
+  --almond: #eee2d2ff;
+  max-width: 100vw;
+  max-height: 100vh;
+}
 
-<body>
-    <div class="bloc1" id="container1">
-        <img src="./images/planche.png" alt="">
-        <!-- joeurs  -->
-        <div class="bloc1__player" id="bloc2">
-            <p id="j1" class="j1"></p>
-            <p id="j2" class="j2"></p>
-        </div>
-        <!-- vies -->
-        <div class="hearts none" id="hearts">
-            <div class="heartP" id="heartP1">
-                <i class="fa-solid fa-heart" id="heartP11"></i>
-                <i class="fa-solid fa-heart" id="heartP12"></i>
-                <i class="fa-solid fa-heart" id="heartP13"></i>
-            </div>
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  background-image: url(./images/paper.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: var(--chestnut);
+}
 
-            <div class="heartP" id="heartP2">
-                <i class="fa-solid fa-heart" id="heartP21"></i>
-                <i class="fa-solid fa-heart" id="heartP22"></i>
-                <i class="fa-solid fa-heart" id="heartP23"></i>
-            </div>
-        </div>
+button:hover {
+  cursor: pointer;
+}
 
-        <!-- formulaire -->
-        <div class="bloc1__form" id="blocForm">
-            <div class="form__form" id="bloc12">
-                <h1>Player names</h1>
-                <form id="form" autocomplete="off">
-                    <label for="pseudo">Player 1</label>
-                    <input type="text" id="pseudo" required maxlength="8">
-                    <label for="pseudo2">Player 2</label>
-                    <input type="text" id="pseudo2" required maxlength="8">
-                    <button type="submit" id="submitBtn">Send</button>
-                </form>
-            </div>
+.none {
+  display: none !important;
+}
 
-            <!-- bouton start -->
-            <button id="start" class="form__startbtn">Start</button>
-        </div>
+input:focus-visible {
+  border: none;
+}
 
-        <!-- mise de départ  -->
-        <div class="bloc1__mise none" id="blocBet">
-            <h1 id="betTitle">Choose your bet</h1>
-            <div class="numbersBloc">
-                <div class="numbers " id="number1">1</div>
-                <div class="numbers " id="number2">2</div>
-                <div class="numbers " id="number3">3</div>
-                <div class="numbers " id="number4">4</div>
-                <div class="numbers " id="number5">5</div>
-            </div>
-            <button class="validateBtn" id="validateBtn">Validate</button>
-            <button class="validateBtn none" id="validateBtn2">Validate</button>
+.bloc1 {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
 
-        </div>
+.bloc1 img {
+  height: 25%;
+  width: 100%;
+  position: absolute;
+  object-fit: cover;
+  margin-top: -10%;
+}
 
+/*container joueur*/
 
-        <!-- cartes -->
+.bloc1__player {
+  height: 140px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  position: relative;
+  margin-bottom: 5%;
+}
 
-        <div id="cards" class="none cardsContainer">
+.j1 {
+  width: 25%;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--almond);
+  margin-left: 0%;
+  border: 7px double var(--xanadu);
+  margin-bottom: 0%;
+  margin-top: 13%;
+}
 
-            <a class="card-wrapper" id="cardWrapper1">
-                <div href="#" class="card" id="card1">
-                    <div class="front">
-                    </div>
-                    <div class="back">
-                        <img src="./images/balle.png" alt="" id="balle1" class="none">
-                    </div>
-                </div>
-            </a>
+.j2 {
+  width: 25%;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: left;
+  font-size: 2rem;
+  color: var(--almond);
+  margin-left: 2%;
+  border: 7px double var(--xanadu);
+  margin-bottom: 0%;
+  margin-top: 13%;
+}
 
-            <a class="card-wrapper2" id="cardWrapper2">
-                <div href="#" class="card" id="card2">
-                    <div class="front">
-                    </div>
-                    <div class="back">
-                        <img src="./images/balle.png" alt="" id="balle2" class="none">
-                    </div>
-                </div>
-            </a>
+.player1Select {
+  background-color: var(--cambridge-blue) !important;
+  scale: 1.1;
+  transition: scale 0.5s;
+}
 
-            <a class="card-wrapper3" id="cardWrapper3">
-                <div href="#" class="card" id="card3">
-                    <div class="front">
-                    </div>
-                    <div class="back">
-                        <img src="./images/balle.png" alt="" id="balle3" class="none">
-                    </div>
-                </div>
-            </a>
+.player2Select {
+  background-color: var(--cambridge-blue) !important;
+  scale: 1.1;
+  transition: scale 0.5s;
+}
 
-            <a class="card-wrapper4" id="cardWrapper4">
-                <div href="#" class="card" id="card4">
-                    <div class="front">
-                    </div>
-                    <div class="back">
-                        <img src="./images/balle.png" alt="" id="balle4" class="none">
-                    </div>
-                </div>
-            </a>
+/*container formulaire*/
 
-            <a class="card-wrapper5" id="cardWrapper5">
-                <div href="#" class="card" id="card5">
-                    <div class="front">
-                    </div>
-                    <div class="back">
-                        <img src="./images/balle.png" alt="" id="balle5" class="none">
-                    </div>
-                </div>
-            </a>
+.bloc1__form {
+  width: 90%;
+  height: 80%;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.form__form {
+  font-size: 0.6rem;
+  width: 95%;
+  height: 70%;
+  border: 8px double var(--xanadu);
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0%;
+  margin-bottom: 3%;
+}
 
-            <a class="card-wrapper6" id="cardWrapper6">
-                <div href="#" class="card" id="card6">
-                    <div class="front">
-                    </div>
-                    <div class="back">
-                        <img src="./images/balle.png" alt="" id="balle6" class="none">
-                    </div>
-                </div>
-            </a>
+.form__form h1 {
+  font-size: 3.5rem;
+  margin-top: 0%;
+  margin-bottom: 2%;
+}
 
-            <a class="card-wrapper7" id="cardWrapper7">
-                <div href="#" class="card" id="card7">
-                    <div class="front">
-                    </div>
-                    <div class="back">
-                        <img src="./images/balle.png" alt="" id="balle7" class="none">
-                    </div>
-                </div>
-            </a>
+.form__form form {
+  font-size: 1em;
+  width: 70%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2%;
+}
 
+#form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8rem;
+  height: 3rem;
+  font-size: 1.7rem;
+  border-radius: 30px;
+  border: 5px double #1c3738;
+  margin-bottom: 15%;
+  background-color: var(--cambridge-blue);
+}
 
-            <a class="card-wrapper8" id="cardWrapper8">
-                <div href="#" class="card" id="card8">
-                    <div class="front">
-                    </div>
-                    <div class="back">
-                        <img src="./images/balle.png" alt="" id="balle8" class="none">
-                    </div>
-                </div>
-            </a>
+#form label {
+  font-size: 2rem;
+  margin-bottom: -0%;
+}
 
+#form input {
+  width: 90%;
+  height: 2.5rem;
+  border: 5px double var(--xanadu);
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.7rem;
+}
 
-            <a class="card-wrapper9" id="cardWrapper9">
-                <div href="#" class="card" id="card9">
-                    <div class="front">
-                    </div>
-                    <div class="back">
-                        <img src="./images/balle.png" alt="" id="balle9" class="none">
-                    </div>
-                </div>
-            </a>
+.form__startbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  height: 10%;
+  font-size: 1.7rem;
+  border-radius: 50px;
+  border: 5px double #1c3738;
+  background-color: var(--cambridge-blue);
+}
 
+#pseudo {
+  /*répetition*/
+  font-size: 2em;
+  height: 25%;
+  width: 90%;
+  margin-bottom: 10%;
+  margin-top: 2%;
+}
 
-            <a class="card-wrapper10" id="cardWrapper10">
-                <div href="#" class="card" id="card10">
-                    <div class="front">
-                    </div>
-                    <div class="back">
-                        <img src="./images/balle.png" alt="" id="balle10" class="none">
-                    </div>
-                </div>
-            </a>
+#pseudo2 {
+  /*répetition*/
+  font-size: 2em;
+  height: 25%;
+  width: 90%;
+  margin-bottom: 10%;
+  margin-top: 2%;
+}
 
-            <!-- affichage des mises  -->
-            <div class="none betContainer" id="showBet">
-                <div id="betj1" class="betBox"></div>
-                <div id="betj2" class="betBox"></div>
-            </div>
+/*bloc numéro mise*/
 
-            <div class="nextRoundBtn none avoidClick" id="nextRoundBtn">
-                <button class="" id="btnNextRound">Next round</button>
-            </div>
+.numbers {
+  width: 15%;
+  height: 20%;
+  border: 6px double var(--xanadu);
+  border-radius: 100px;
+  color: black;
+  font-size: 2em;
+  margin-right: 6%;
+  margin-left: 5%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.numbers:hover {
+  scale: 1.3;
+  box-shadow: 0px 0px 15px 0px var(--chestnut);
+}
 
-        </div>
-    </div>
-</body>
+.numberSelect {
+  scale: 1.3;
+  box-shadow: 0px 0px 15px 0px var(--chestnut);
+  background-color: var(--cambridge-blue);
+}
 
-</html>
+.bloc1__mise {
+  margin-top: 0%;
+  margin-bottom: 0%;
+  height: 85%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.numbersBloc {
+  margin-top: 0%;
+  margin-bottom: 7%;
+  height: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.bloc1__mise h1 {
+  color: black;
+  margin-top: 0%;
+  margin-bottom: 10%;
+  margin-top: 5%;
+  font-size: 3rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.validateBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  width: 30%;
+  height: 10%;
+  margin-bottom: 5%;
+  border-radius: 30px;
+  background-color: var(--cambridge-blue);
+  border: 5px double var(--xanadu);
+}
+
+/*container mises afficher*/
+
+.betContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 5%;
+  margin-top: 75%;
+}
+
+.betBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 8%;
+  height: 100%;
+  border: 5px double var(--xanadu);
+  border-radius: 100px;
+  background-color: #d9d5d7;
+  font-size: 1.3em;
+  margin-bottom: 8%;
+}
+
+#betj1 {
+  margin-left: 20%;
+}
+
+#betj2 {
+  margin-left: 40%;
+}
+
+/* vies */
+
+.hearts {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 8%;
+  margin-top: 0%;
+  font-size: 1.8rem;
+  margin-left: 0%;
+  margin-right: 0%;
+  margin-bottom: 0%;
+}
+
+.heartP {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 40%;
+  border: 5px double var(--xanadu);
+  border-radius: 50px;
+}
+
+.fa-heart {
+  margin: 0%;
+  color: var(--xanadu);
+}
+
+/*affichage des cartes */
+
+.avoidClick {
+  pointer-events: none;
+}
+
+/* bouton prochain round */
+
+.nextRoundBtn {
+  height: 20%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.nextRoundBtn button {
+  width: 35%;
+  height: 50%;
+  align-self: flex-start;
+  border-radius: 50px;
+  background-color: var(--cambridge-blue);
+  font-size: 1.7rem;
+  border: 5px double var(--xanadu);
+  opacity: 0.2;
+}
+
+.btnNextRound {
+  opacity: 1 !important;
+  transition: opacity 1s ease-in-out !important;
+}
+
+/*cartes */
+
+.cardsContainer {
+  width: 100%;
+  height: 70%;
+}
+
+.card-wrapper {
+  position: absolute;
+  z-index: 10;
+  perspective: 2000px;
+  perspective-origin: top;
+  width: 41%;
+  height: 33%;
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  align-self: flex-start;
+  margin-top: 5%;
+  margin-bottom: 0%;
+  cursor: pointer;
+}
+
+/* animatiom deplacement card-wrapper */
+@-webkit-keyframes translate {
+  100% {
+    -webkit-transform: translateX(120%);
+    transform: translateX(120%);
+  }
+}
+
+@keyframes translate {
+  100% {
+    -webkit-transform: translateX(120%);
+    transform: translateX(120%);
+  }
+}
+
+/* animation rotation card */
+
+@-webkit-keyframes rotate {
+  100% {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes rotate {
+  100% {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+}
+
+.card-wrapper-anim {
+  animation: translate 1s ease-in-out forwards;
+}
+
+.cardAnim {
+  animation: rotate 1s ease-in-out forwards;
+}
+
+.card {
+  position: relative;
+  width: 90%;
+  height: 90%;
+  transform-style: preserve-3d;
+}
+
+.front,
+.back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.front {
+  background-image: url(./images/carteFront.png);
+  background-size: cover;
+}
+
+.front p {
+  margin-top: 60%;
+}
+
+.back {
+  background-image: url(./images/cardBackEmpty.png);
+  background-size: cover;
+  transform: rotateY(180deg);
+}
+
+.back img {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  margin-top: 0%;
+}
+
+/* autres cartes */
+
+.card-wrapper2 {
+  position: absolute;
+  z-index: 9;
+  perspective: 2000px;
+  perspective-origin: top;
+  width: 41%;
+  height: 33%;
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  align-self: flex-start;
+  margin-top: 5%;
+  margin-bottom: 0%;
+  cursor: pointer;
+}
+
+.card-wrapper3 {
+  position: absolute;
+  z-index: 8;
+  perspective: 2000px;
+  perspective-origin: top;
+  width: 41%;
+  height: 33%;
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  align-self: flex-start;
+  margin-top: 5%;
+  margin-bottom: 0%;
+  cursor: pointer;
+}
+
+.card-wrapper4 {
+  position: absolute;
+  z-index: 7;
+  perspective: 2000px;
+  perspective-origin: top;
+  width: 41%;
+  height: 33%;
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  align-self: flex-start;
+  margin-top: 5%;
+  margin-bottom: 0%;
+  cursor: pointer;
+}
+
+.card-wrapper5 {
+  position: absolute;
+  z-index: 6;
+  perspective: 2000px;
+  perspective-origin: top;
+  width: 41%;
+  height: 33%;
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  align-self: flex-start;
+  margin-top: 5%;
+  margin-bottom: 0%;
+  cursor: pointer;
+}
+
+.card-wrapper6 {
+  position: absolute;
+  z-index: 5;
+  perspective: 2000px;
+  perspective-origin: top;
+  width: 41%;
+  height: 33%;
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  align-self: flex-start;
+  margin-top: 5%;
+  margin-bottom: 0%;
+  cursor: pointer;
+}
+
+.card-wrapper7 {
+  position: absolute;
+  z-index: 4;
+  perspective: 2000px;
+  perspective-origin: top;
+  width: 41%;
+  height: 33%;
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  align-self: flex-start;
+  margin-top: 5%;
+  margin-bottom: 0%;
+  cursor: pointer;
+}
+
+.card-wrapper8 {
+  position: absolute;
+  z-index: 3;
+  perspective: 2000px;
+  perspective-origin: top;
+  width: 41%;
+  height: 33%;
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  align-self: flex-start;
+  margin-top: 5%;
+  margin-bottom: 0%;
+  cursor: pointer;
+}
+
+.card-wrapper9 {
+  position: absolute;
+  z-index: 2;
+  perspective: 2000px;
+  perspective-origin: top;
+  width: 41%;
+  height: 33%;
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  align-self: flex-start;
+  margin-top: 5%;
+  margin-bottom: 0%;
+  cursor: pointer;
+}
+
+.card-wrapper10 {
+  position: absolute;
+  z-index: 1;
+  perspective: 2000px;
+  perspective-origin: top;
+  width: 41%;
+  height: 33%;
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  align-self: flex-start;
+  margin-top: 5%;
+  margin-bottom: 0%;
+  cursor: pointer;
+}
