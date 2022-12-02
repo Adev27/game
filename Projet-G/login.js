@@ -202,10 +202,12 @@ let gameMain = () => {
   let randomPlayer = () => {
     randomnumber(1, 20);
     if (number < 10) {
-      document.getElementById('j1').classList.add('player1Select')
+      document.getElementById('j1').classList.add('player1Select');
+      document.getElementById('betj1').classList.add('player1Select');
       firstPlayer = 'j1';
     } else if (number > 10) {
-      document.getElementById('j2').classList.add('player2Select')
+      document.getElementById('j2').classList.add('player2Select');
+      document.getElementById('betj2').classList.add('player2Select');
       firstPlayer = 'j2';
     } else {
       randomPlayer();
