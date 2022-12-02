@@ -80,7 +80,6 @@ input:focus-visible {
   color: var(--almond);
   margin-left: 0%;
   border: 7px double var(--xanadu);
-  border-radius: 0px 0px 30px 30px;
   margin-bottom: 0%;
 }
 
@@ -95,7 +94,6 @@ input:focus-visible {
   color: var(--almond);
   margin-left: 2%;
   border: 7px double var(--xanadu);
-  border-radius: 0px 0px 30px 30px;
   margin-bottom: 0%;
 }
 
@@ -127,7 +125,7 @@ input:focus-visible {
   width: 95%;
   height: 70%;
   border: 8px double var(--xanadu);
-  border-radius: 50px;
+  border-radius: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -173,7 +171,6 @@ input:focus-visible {
 #form input {
   width: 90%;
   height: 2.5rem;
-  border-radius: 30px;
   border: 5px double var(--xanadu);
   background-color: transparent;
   text-align: center;
@@ -317,14 +314,6 @@ input:focus-visible {
   margin-left: 20%;
 }
 
-.cardContainer {
-  width: 100%;
-  height: 50%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  position: sticky;
-}
 /* vies */
 
 .hearts {
@@ -355,197 +344,6 @@ input:focus-visible {
 
 /*affichage des cartes */
 
-.cardsDeck {
-  width: 40%;
-  height: 70%;
-  background-color: var(--xanadu);
-  border: 4px double white;
-  margin-left: 5%;
-  border-radius: 10px;
-  position: absolute;
-  z-index: 10;
-}
-
-.cardsDeck2 {
-  width: 40%;
-  height: 70%;
-  background-color: var(--xanadu);
-  border: 4px double white;
-  margin-left: 5%;
-  border-radius: 10px;
-  position: absolute;
-  z-index: 9;
-}
-
-.cardsDeck3 {
-  width: 40%;
-  height: 70%;
-  background-color: var(--xanadu);
-  border: 4px double white;
-  margin-left: 5%;
-  border-radius: 10px;
-  position: absolute;
-  z-index: 8;
-}
-
-.cardsDeck4 {
-  width: 40%;
-  height: 70%;
-  background-color: var(--xanadu);
-  border: 4px double white;
-  margin-left: 5%;
-  border-radius: 10px;
-  position: absolute;
-  z-index: 7;
-}
-
-.cardsDeck5 {
-  width: 40%;
-  height: 70%;
-  background-color: var(--xanadu);
-  border: 4px double white;
-  margin-left: 5%;
-  border-radius: 10px;
-  position: absolute;
-  z-index: 6;
-}
-
-.cardsDeck6 {
-  width: 40%;
-  height: 70%;
-  background-color: var(--xanadu);
-  border: 4px double white;
-  margin-left: 5%;
-  border-radius: 10px;
-  position: absolute;
-  z-index: 5;
-}
-
-.cardsDeck7 {
-  width: 40%;
-  height: 70%;
-  background-color: var(--xanadu);
-  border: 4px double white;
-  margin-left: 5%;
-  border-radius: 10px;
-  position: absolute;
-  z-index: 4;
-}
-
-.cardsDeck8 {
-  width: 40%;
-  height: 70%;
-  background-color: var(--xanadu);
-  border: 4px double white;
-  margin-left: 5%;
-  border-radius: 10px;
-  position: absolute;
-  z-index: 3;
-}
-
-.cardsDeck9 {
-  width: 40%;
-  height: 70%;
-  background-color: var(--xanadu);
-  border: 4px double white;
-  margin-left: 5%;
-  border-radius: 10px;
-  position: absolute;
-  z-index: 2;
-}
-
-.cardsDeck10 {
-  width: 40%;
-  height: 70%;
-  background-color: var(--xanadu);
-  border: 4px double white;
-  margin-left: 5%;
-  border-radius: 10px;
-  position: absolute;
-  z-index: 1;
-}
-
-.cardContainer img {
-  border-style: none;
-  object-fit: contain;
-  width: 100%;
-  height: 100%;
-}
-
-@-webkit-keyframes opacity {
-  0% {
-    -webkit-opacity: 0;
-    opacity: 0;
-  }
-  50% {
-    -webkit-opacity: 0;
-    opacity: 0;
-  }
-  100% {
-    -webkit-opacity: 1;
-    opacity: 1;
-  }
-}
-
-@keyframes opacity {
-  0% {
-    -webkit-opacity: 0;
-    opacity: 0;
-  }
-  50% {
-    -webkit-opacity: 0;
-    opacity: 0;
-  }
-  100% {
-    -webkit-opacity: 1;
-    opacity: 1;
-  }
-}
-
-.cardsPlayed {
-  width: 35%;
-  height: 40%;
-  border: 5px solid #50d8d7;
-  margin-bottom: 60%;
-  border-radius: 10px;
-}
-
-.cardsDeckFlip {
-  -webkit-animation: flip-vertical-right 1s
-    cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
-  animation: flip-vertical-right 1s cubic-bezier(0.455, 0.03, 0.515, 0.955)
-    forwards;
-}
-
-@-webkit-keyframes flip-vertical-right {
-  0% {
-    /* -webkit-transform: rotateY(0);
-    transform: rotateY(0); */
-    -webkit-transform: translateX(0) rotateY(0);
-    transform: translateX(0) rotateY(0);
-  }
-  100% {
-    /* -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg); */
-    -webkit-transform: translateX(120%) rotateY(180deg);
-    transform: translateX(120%) rotateY(180deg);
-  }
-}
-@keyframes flip-vertical-right {
-  0% {
-    /* -webkit-transform: rotateY(0);
-    transform: rotateY(0); */
-    -webkit-transform: translateX(0) rotateY(0);
-    transform: translateX(0) rotateY(0);
-  }
-  100% {
-    /* -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg); */
-    -webkit-transform: translateX(120%) rotateY(180deg);
-    transform: translateX(120%) rotateY(180deg);
-  }
-}
-
 .avoidClick {
   pointer-events: none;
 }
@@ -558,11 +356,12 @@ input:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 85%;
 }
 
 .nextRoundBtn button {
   width: 35%;
-  height: 35%;
+  height: 50%;
   align-self: flex-start;
   border-radius: 50px;
   background-color: var(--cambridge-blue);
@@ -574,4 +373,270 @@ input:focus-visible {
 .btnNextRound {
   opacity: 1 !important;
   transition: opacity 1s ease-in-out !important;
+}
+
+/*cartes */
+
+.cardsContainer {
+  width: 100%;
+  height: 70%;
+}
+
+.card-wrapper {
+  position: absolute;
+  z-index: 10;
+  perspective: 2000px;
+  perspective-origin: top;
+  width: 41%;
+  height: 33%;
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  align-self: flex-start;
+  margin-top: 5%;
+  margin-bottom: 0%;
+  cursor: pointer;
+}
+
+/* animatiom deplacement card-wrapper */
+@-webkit-keyframes translate {
+  100% {
+    -webkit-transform: translateX(120%);
+    transform: translateX(120%);
+  }
+}
+
+@keyframes translate {
+  100% {
+    -webkit-transform: translateX(120%);
+    transform: translateX(120%);
+  }
+}
+
+/* animation rotation card */
+
+@-webkit-keyframes rotate {
+  100% {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes rotate {
+  100% {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+}
+
+.card-wrapper-anim {
+  animation: translate 1s ease-in-out forwards;
+}
+
+.cardAnim {
+  animation: rotate 1s ease-in-out forwards;
+}
+
+.card {
+  position: relative;
+  width: 90%;
+  height: 90%;
+  transform-style: preserve-3d;
+}
+
+.front,
+.back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.front {
+  background-image: url(./images/carteFront.png);
+  background-size: cover;
+}
+
+.front p {
+  margin-top: 60%;
+}
+
+.back {
+  background-image: url(./images/cardBackEmpty.png);
+  background-size: cover;
+  transform: rotateY(180deg);
+}
+
+.back img {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  margin-top: 0%;
+}
+
+/* autres cartes */
+
+.card-wrapper2 {
+  position: absolute;
+  z-index: 9;
+  perspective: 2000px;
+  perspective-origin: top;
+  width: 41%;
+  height: 33%;
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  align-self: flex-start;
+  margin-top: 5%;
+  margin-bottom: 0%;
+  cursor: pointer;
+}
+
+.card-wrapper3 {
+  position: absolute;
+  z-index: 8;
+  perspective: 2000px;
+  perspective-origin: top;
+  width: 41%;
+  height: 33%;
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  align-self: flex-start;
+  margin-top: 5%;
+  margin-bottom: 0%;
+  cursor: pointer;
+}
+
+.card-wrapper4 {
+  position: absolute;
+  z-index: 7;
+  perspective: 2000px;
+  perspective-origin: top;
+  width: 41%;
+  height: 33%;
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  align-self: flex-start;
+  margin-top: 5%;
+  margin-bottom: 0%;
+  cursor: pointer;
+}
+
+.card-wrapper5 {
+  position: absolute;
+  z-index: 6;
+  perspective: 2000px;
+  perspective-origin: top;
+  width: 41%;
+  height: 33%;
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  align-self: flex-start;
+  margin-top: 5%;
+  margin-bottom: 0%;
+  cursor: pointer;
+}
+
+.card-wrapper6 {
+  position: absolute;
+  z-index: 5;
+  perspective: 2000px;
+  perspective-origin: top;
+  width: 41%;
+  height: 33%;
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  align-self: flex-start;
+  margin-top: 5%;
+  margin-bottom: 0%;
+  cursor: pointer;
+}
+
+.card-wrapper7 {
+  position: absolute;
+  z-index: 4;
+  perspective: 2000px;
+  perspective-origin: top;
+  width: 41%;
+  height: 33%;
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  align-self: flex-start;
+  margin-top: 5%;
+  margin-bottom: 0%;
+  cursor: pointer;
+}
+
+.card-wrapper8 {
+  position: absolute;
+  z-index: 3;
+  perspective: 2000px;
+  perspective-origin: top;
+  width: 41%;
+  height: 33%;
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  align-self: flex-start;
+  margin-top: 5%;
+  margin-bottom: 0%;
+  cursor: pointer;
+}
+
+.card-wrapper9 {
+  position: absolute;
+  z-index: 2;
+  perspective: 2000px;
+  perspective-origin: top;
+  width: 41%;
+  height: 33%;
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  align-self: flex-start;
+  margin-top: 5%;
+  margin-bottom: 0%;
+  cursor: pointer;
+}
+
+.card-wrapper10 {
+  position: absolute;
+  z-index: 1;
+  perspective: 2000px;
+  perspective-origin: top;
+  width: 41%;
+  height: 33%;
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  align-self: flex-start;
+  margin-top: 5%;
+  margin-bottom: 0%;
+  cursor: pointer;
 }
