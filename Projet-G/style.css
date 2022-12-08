@@ -6,11 +6,13 @@
 * {
   font-family: "Sanek-Regular";
   --chestnut: #9d4931ff;
+  --chestnutTransparent:rgba(157, 72, 49, 0.685);
   --brown-sugar: #b9714bff;
   --cambridge-blue: #a7c4b0ff;
   --timberwolf: #ccc8bcff;
   --xanadu: #1c3738;
   --almond: #eee2d2ff;
+  --almondTransparent: rgba(238, 226, 210, 0.322);
   max-width: 100vw;
   max-height: 100vh;
 }
@@ -99,13 +101,7 @@ input:focus-visible {
   margin-top: 13%;
 }
 
-.player1Select {
-  background-color: var(--cambridge-blue) !important;
-  scale: 1.1;
-  transition: scale 0.5s;
-}
-
-.player2Select {
+.playerSelect {
   background-color: var(--cambridge-blue) !important;
   scale: 1.1;
   transition: scale 0.5s;
@@ -211,6 +207,71 @@ input:focus-visible {
 
 /*bloc numéro mise*/
 
+/* new version */
+
+.counter {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  align-items: center;
+}
+.counter--output {
+  font-size: 35px;
+  text-align: center;
+  padding-bottom: 3px;
+  display: flex;
+  width: 100px;
+  height: 40px;
+  border: 5px double var(--xanadu);
+  background-color: var(--almondTransparent);
+  border-radius: 2px;
+  margin: 14px 0;
+  padding: 0 18px;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--xanadu);
+}
+.counter input[type=number]::-webkit-inner-spin-button, .counter input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.counter--arrow-inc, .counter--arrow-dec {
+  border: 5px double var(--xanadu);
+  background-color: var(--chestnutTransparent);
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  cursor: pointer;
+}
+.counter--arrow-inc:hover, .counter--arrow-dec:hover {
+  background-color: var(--chestnut);
+}
+.counter--arrow-inc.js-noevent, .counter--arrow-dec.js-noevent {
+  pointer-events: none;
+  background-color: #e6e6e6;
+  border: none;
+}
+.counter--arrow-inc span, .counter--arrow-dec span {
+  height: 90px;
+  color: transparent;
+  font-size: 0;
+}
+.counter--arrow-inc span:before, .counter--arrow-dec span:before {
+  display: flex;
+  height: 100%;
+  font-size: 23px;
+  color: white;
+  transition: opacity ease 0.3s;
+  justify-content: center;
+  align-items: center;
+  content: "\25bc";
+}
+.counter--arrow-inc span:before {
+  transform: rotate(180deg);
+}
+
+
+/* old version */
 .numbers {
   width: 15%;
   height: 20%;
@@ -248,7 +309,7 @@ input:focus-visible {
 
 .numbersBloc {
   margin-top: 0%;
-  margin-bottom: 7%;
+  margin-bottom: 0%;
   height: 50%;
   width: 100%;
   display: flex;
@@ -379,6 +440,7 @@ input:focus-visible {
 .btnNextRound {
   opacity: 1 !important;
   transition: opacity 1s ease-in-out !important;
+  pointer-events: all;
 }
 
 /*cartes */
@@ -442,6 +504,14 @@ input:focus-visible {
 }
 
 .cardAnim {
+  animation: rotate 1s ease-in-out forwards;
+}
+
+.card-wrapper-anim2 {
+  animation: translate2 1s ease-in-out forwards
+}
+
+.cardAnim2 {
   animation: rotate 1s ease-in-out forwards;
 }
 
@@ -646,3 +716,38 @@ input:focus-visible {
   margin-bottom: 0%;
   cursor: pointer;
 }
+
+/* animation remise a 0 des cartes  */
+
+
+/* animatiom deplacement card-wrapper */
+@-webkit-keyframes translate2 {
+  100% {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+}
+
+@keyframes translate2 {
+  100% {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+}
+
+/* animation rotation card */
+
+@-webkit-keyframes rotate2 {
+  100% {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+  }
+}
+
+@keyframes rotate2 {
+  100% {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+  }
+}
+
