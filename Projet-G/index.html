@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="normalize.css">
-    <script src="login.js" defer></script>
+    <script type="module" src="script2.js"defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/36db748ff7.js" crossorigin="anonymous"></script>
     <title>Document</title>
@@ -45,23 +45,20 @@
                     <input type="text" id="pseudo" required maxlength="8">
                     <label for="pseudo2">Player 2</label>
                     <input type="text" id="pseudo2" required maxlength="8">
-                    <button type="submit" id="submitBtn">Send</button>
+                    <button type="submit" id="submitBtn">Start</button>
                 </form>
             </div>
-
-            <!-- bouton start -->
-            <button id="start" class="form__startbtn">Start</button>
         </div>
 
         <!-- mise de départ  -->
         <div class="bloc1__mise none" id="blocBet">
             <h1 id="betTitle">Choose your bet</h1>
             <div class="numbersBloc">
-                <div class="numbers " id="number1">1</div>
-                <div class="numbers " id="number2">2</div>
-                <div class="numbers " id="number3">3</div>
-                <div class="numbers " id="number4">4</div>
-                <div class="numbers " id="number5">5</div>
+                <div class="counter">
+                    <button class="counter--arrow-inc" id="arrowUp"><span>Increase</span></button>
+                      <input type="number" class="counter--output" min="1" max="5" value='1' id="inputBet">
+                    <button class="counter--arrow-dec" id="arrowDown"><span>Decrease</span></button>
+                  </div>
             </div>
             <button class="validateBtn" id="validateBtn">Validate</button>
             <button class="validateBtn none" id="validateBtn2">Validate</button>
@@ -178,15 +175,15 @@
             </a>
 
             <!-- affichage des mises  -->
-            <div class="none betContainer" id="showBet">
+            <div class="betContainer" id="showBet">
                 <h2>P1 Bet</h2>
                 <div id="betj1" class="betBox"></div>
                 <h2>P2 Bet</h2>
                 <div id="betj2" class="betBox"></div>
             </div>
 
-            <div class="nextRoundBtn none avoidClick" id="nextRoundBtn">
-                <button class="" id="btnNextRound">Next round</button>
+            <div class="nextRoundBtn none" id="nextRoundBtn">
+                <button class="avoidClick" id="btnNextRound">Next round</button>
             </div>
 
         </div>
