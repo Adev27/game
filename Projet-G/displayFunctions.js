@@ -13,6 +13,7 @@ const removeBet = () => {
 };
 
 const cardsReset = () => {
+    console.log('reset cartes')
     document.getElementById('balle1').classList.add('none');
     document.getElementById('balle2').classList.add('none');
     document.getElementById('balle2').classList.add('none');
@@ -59,7 +60,7 @@ const cardsReset = () => {
     document.getElementById('card9').classList.remove('cardAnim');
     document.getElementById('card10').classList.remove('cardAnim');
 
-  
+
 };
 
 const showBlocChooseBet = () => {
@@ -105,8 +106,18 @@ const showPopup = () => {
     document.getElementById('popup').classList.remove('none');
 };
 
-const removePopup = () => { 
+const removePopup = () => {
     document.getElementById('popup').classList.add('none');
 };
 
-export { removeLife, removeBet, removeCard, cardsReset, showBlocChooseBet, playerSelect, showCard, removeBlocChooseBet, showLife, showNextRoundBtn, showBet, showPopup, removePopup };
+const nextRoundBtnAvailable = () => {
+    document.getElementById('btnNextRound').classList.add('btnNextRound');
+    document.getElementById('btnNextRound').classList.remove('avoidClick');
+}
+
+const nextRoundBtnDisable = () => {
+    document.getElementById('btnNextRound').classList.remove('btnNextRound');
+    document.getElementById('btnNextRound').classList.add('avoidClick');
+}
+
+export { removeLife, removeBet, removeCard, cardsReset, showBlocChooseBet, playerSelect, showCard, removeBlocChooseBet, showLife, showNextRoundBtn, showBet, showPopup, removePopup, nextRoundBtnAvailable, nextRoundBtnDisable };
