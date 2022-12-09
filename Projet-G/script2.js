@@ -1,4 +1,4 @@
-import { removeLife, removeBet, removeCard, cardsReset, showBlocChooseBet, playerSelect, showCard, removeBlocChooseBet, showLife, showNextRoundBtn, showBet } from "./displayFunctions.js";
+import { removeLife, removeBet, removeCard, cardsReset, showBlocChooseBet, playerSelect, showCard, removeBlocChooseBet, showLife, showNextRoundBtn, showBet, showPopup, removePopup } from "./displayFunctions.js";
 import { validationBtnReset, resetVariablesTrue, betValidation, randomPlayer, randomnumber } from "./tools.js";
 
 
@@ -59,14 +59,18 @@ const mainGame = () => {
     // ----------Variables vies 
     let j1Lifes = 3;
     let j2Lifes = 3;
-    const heartSelection1 = "heartP1" + `${j1Lifes}`;
-    const heartToDelete1 = document.getElementById(`${heartSelection1}`);
-    const heartSelection2 = "heartP2" + `${j2Lifes}`;
-    const heartToDelete2 = document.getElementById(`${heartSelection2}`);
+    let heartSelection1 = "heartP1" + `${j1Lifes}`;
+    let heartToDelete1 = document.getElementById(`${heartSelection1}`);
+    let heartSelection2 = "heartP2" + `${j2Lifes}`;
+    let heartToDelete2 = document.getElementById(`${heartSelection2}`);
     let playerStatut = true; // a reset 
 
     // Variable check mises 
     let betCheck = true; // a reset 
+
+    // Variable check carte 'balle'
+    let balleNumber = '';
+    let NumberOfClick = 0; //a reset
 
     // Events
 
@@ -122,37 +126,34 @@ const mainGame = () => {
         document.getElementById('betj1').innerHTML = `${p1Bet}`;
         document.getElementById('betj2').innerHTML = `${p2Bet}`;
         showLife();
+        document.getElementById('lifesP1').innerHTML = `${j1Lifes}`
+        document.getElementById('lifesP2').innerHTML = `${j2Lifes}`
         actualPlayer = playerSelect(randomPlayer(1, 20));
         console.log(`actual player = P${actualPlayer}`);
         showNextRoundBtn();
         playerStatut = true;
+        cardBullet();
     });
 
     // --------Tirage carte et Event cartes 
 
     // ----------------------------------------Algo tirage carte aleatoire
-    const cardNumber = () => {
-        let number = randomnumber(0, cardArray.length);
-        cardSelected = cardArray[number];
-        if (cardSelected.value) {
-            cardSelected.value = false;
-            cardNumberCheck++;
-            cardName = cardSelected.name;
-        } else if (cardNumberCheck < 10) {
-            cardNumber();
-        } else {
-            cardName = false;
-        }
+
+    const cardBullet = () => {
+        let number = randomnumber(1, 10);
+        balleNumber = number++;
+        console.log(`carte balle = ${balleNumber}`);
+        document.getElementById(`balle${balleNumber}`).classList.remove('none');
+
     };
 
-    const cardPick = () => {
-        cardNumber();
-        console.log(cardName);
-        if (cardSelected.type === "bullet") {
-            return true
-        } else {
-            return false
-        };
+    const bulletCardCheck = () => {
+        NumberOfClick++;
+        console.log(`nombre de clic : ${NumberOfClick}`);
+        if (NumberOfClick === balleNumber) {
+            endRound();
+        }
+
     };
 
     // ----------------------------------------Modification des mises 
@@ -171,13 +172,13 @@ const mainGame = () => {
     const numberBetCheck = () => {
         if (p1Bet < 1 || p2Bet < 1) {
             playerStatut = false;
-            console.log(playerStatut);
+            // console.log(playerStatut);
         }
     };
 
     const nextPlayer = () => {
-        console.log(`nextPlayerPreLog actualPlayer = ${actualPlayer}`);
-        console.log(`nextPlayerPreLog playerStatut = ${playerStatut}`);
+        // console.log(`nextPlayerPreLog actualPlayer = ${actualPlayer}`);
+        // console.log(`nextPlayerPreLog playerStatut = ${playerStatut}`);
         if (playerStatut) {
             if (actualPlayer === 1) {
                 document.getElementById('j1').classList.remove('playerSelect');
@@ -194,23 +195,37 @@ const mainGame = () => {
                 actualPlayer = 1;
                 console.log(`nextPlayer = ${actualPlayer}`);
             }
-        } 
+        }
         numberBetCheck();
     };
 
     // ----------------------------------------Fin de round en cas de tirage balle 
     const endRound = () => {
+        setTimeout(cardsReset, 2000);
         p1Bet = 0;
         p2Bet = 0;
         document.getElementById('btnNextRound').classList.add('btnNextRound');
         document.getElementById('btnNextRound').classList.remove('avoidClick');
         document.getElementById('cards').classList.add('avoidClick');
         if (actualPlayer === 1) {
-            document.getElementById('heartP1').removeChild(heartToDelete1);
+            j1Lifes--;
+            document.getElementById('lifesP1').innerHTML = `${j1Lifes}`
         } else {
-            document.getElementById('heartP2').removeChild(heartToDelete2);
-
+            j2Lifes--;
+            document.getElementById('lifesP2').innerHTML = `${j2Lifes}`
         };
+
+        if (j1Lifes === 0) {
+            setTimeout(showPopup, 1000);
+            document.getElementById('popupP').innerHTML = 'Player 2 winner !';
+            return
+        }
+
+        if (j2Lifes === 0) {
+            setTimeout(showPopup, 1000);
+            document.getElementById('popupP').innerHTML = 'Player 1 winner !';
+            return
+        }
     };
 
     // ---------------------------------------Fin de round mises = 0 
@@ -224,6 +239,8 @@ const mainGame = () => {
         document.getElementById('cards').classList.add('avoidClick');
         document.getElementById('btnNextRound').classList.add('btnNextRound');
         document.getElementById('btnNextRound').classList.remove('avoidClick');
+        setTimeout(showPopup, 1000);
+        document.getElementById('popupP').innerHTML = 'End of the round !';
     };
 
     // -------------------------------------- Event cartes 
@@ -231,14 +248,12 @@ const mainGame = () => {
     document.getElementById('cardWrapper1').addEventListener("click", () => {
         document.getElementById('cardWrapper1').classList.add('card-wrapper-anim', "avoidClick");
         document.getElementById('card1').classList.add('cardAnim');
-        if (cardPick()) {
-            document.getElementById('balle1').classList.remove('none');
-            endRound();
-        } else {
-            nextPlayer();
-            playerBetModif();
-            endRound2();
-        };
+
+        bulletCardCheck();
+        playerBetModif();
+        nextPlayer();
+        endRound2();
+
 
     });
 
@@ -246,14 +261,12 @@ const mainGame = () => {
         document.getElementById('cardWrapper2').classList.add('card-wrapper-anim', "avoidClick");
         document.getElementById('card2').classList.add('cardAnim');
         document.getElementById('cardWrapper2').style.zIndex = "10";
-        if (cardPick()) {
-            document.getElementById('balle2').classList.remove('none');
-            endRound();
-        } else {
-            nextPlayer();
-            playerBetModif();
-            endRound2();
-        };
+
+        bulletCardCheck();
+        playerBetModif();
+        nextPlayer();
+        endRound2();
+
 
     });
 
@@ -261,130 +274,115 @@ const mainGame = () => {
         document.getElementById('cardWrapper3').classList.add('card-wrapper-anim', "avoidClick");
         document.getElementById('card3').classList.add('cardAnim');
         document.getElementById('cardWrapper3').style.zIndex = "10";
-        if (cardPick()) {
-            document.getElementById('balle3').classList.remove('none');
-            endRound();
-        } else {
-            nextPlayer();
-            playerBetModif();
-            endRound2();
-        };
+
+        bulletCardCheck();
+        playerBetModif();
+        nextPlayer();
+        endRound2();
+
     });
 
     document.getElementById('cardWrapper4').addEventListener("click", () => {
         document.getElementById('cardWrapper4').classList.add('card-wrapper-anim', "avoidClick");
         document.getElementById('card4').classList.add('cardAnim');
         document.getElementById('cardWrapper4').style.zIndex = "10";
-        if (cardPick()) {
-            document.getElementById('balle4').classList.remove('none');
-            endRound();
-        } else {
-            nextPlayer();
-            playerBetModif();
-            endRound2();
-        };
+
+        bulletCardCheck();
+        playerBetModif();
+        nextPlayer();
+        endRound2();
+
     });
 
     document.getElementById('cardWrapper5').addEventListener("click", () => {
         document.getElementById('cardWrapper5').classList.add('card-wrapper-anim', "avoidClick");
         document.getElementById('card5').classList.add('cardAnim');
         document.getElementById('cardWrapper5').style.zIndex = "10";
-        if (cardPick()) {
-            document.getElementById('balle5').classList.remove('none');
-            endRound();
-        } else {
-            nextPlayer();
-            playerBetModif();
-            endRound2();
-        };
+
+        bulletCardCheck();
+        playerBetModif();
+        nextPlayer();
+        endRound2();
+
     });
 
     document.getElementById('cardWrapper6').addEventListener("click", () => {
         document.getElementById('cardWrapper6').classList.add('card-wrapper-anim', "avoidClick");
         document.getElementById('card6').classList.add('cardAnim');
         document.getElementById('cardWrapper6').style.zIndex = "10";
-        if (cardPick()) {
-            document.getElementById('balle6').classList.remove('none');
-            endRound();
-        } else {
-            nextPlayer();
-            playerBetModif();
-            endRound2();
-        };
+        bulletCardCheck();
+        playerBetModif();
+        nextPlayer();
+        endRound2();
+
     });
 
     document.getElementById('cardWrapper7').addEventListener("click", () => {
         document.getElementById('cardWrapper7').classList.add('card-wrapper-anim', "avoidClick");
         document.getElementById('card7').classList.add('cardAnim');
         document.getElementById('cardWrapper7').style.zIndex = "10";
-        if (cardPick()) {
-            document.getElementById('balle7').classList.remove('none');
-            endRound();
-        } else {
-            nextPlayer();
-            playerBetModif();
-            endRound2();
-        };
+
+        bulletCardCheck();
+        playerBetModif();
+        nextPlayer();
+        endRound2();
+
     });
 
     document.getElementById('cardWrapper8').addEventListener("click", () => {
         document.getElementById('cardWrapper8').classList.add('card-wrapper-anim', "avoidClick");
         document.getElementById('card8').classList.add('cardAnim');
         document.getElementById('cardWrapper8').style.zIndex = "10";
-        if (cardPick()) {
-            document.getElementById('balle8').classList.remove('none');
-            endRound();
-        } else {
-            nextPlayer();
-            playerBetModif();
-            endRound2();
-        };
+        bulletCardCheck();
+        playerBetModif();
+        nextPlayer();
+        endRound2();
+
     });
 
     document.getElementById('cardWrapper9').addEventListener("click", () => {
         document.getElementById('cardWrapper9').classList.add('card-wrapper-anim', "avoidClick");
         document.getElementById('card9').classList.add('cardAnim');
         document.getElementById('cardWrapper9').style.zIndex = "10";
-        if (cardPick()) {
-            document.getElementById('balle9').classList.remove('none');
-            endRound();
-        } else {
-            nextPlayer();
-            playerBetModif();
-            endRound2();
-        };
+        bulletCardCheck();
+        playerBetModif();
+        nextPlayer();
+        endRound2();
+
     });
 
     document.getElementById('cardWrapper10').addEventListener("click", () => {
         document.getElementById('cardWrapper10').classList.add('card-wrapper-anim', "avoidClick");
         document.getElementById('card10').classList.add('cardAnim');
         document.getElementById('cardWrapper10').style.zIndex = "10";
-        if (cardPick()) {
-            document.getElementById('balle10').classList.remove('none');
-            endRound();
-        } else {
-            nextPlayer();
-            playerBetModif();
-            endRound2();
-        };
+        bulletCardCheck();
+        playerBetModif();
+        nextPlayer();
+        endRound2();
+
     });
 
 
     //--------Event button next round 
 
     document.getElementById('btnNextRound').addEventListener('click', () => {
-        console.log(p1Bet)
+        console.log(p1Bet);
         console.log(p2Bet);
+        console.log(j1Lifes);
+        console.log(j2Lifes);
         // reset variable 'actual player' et 'firstPlayer'
         actualPlayer = 1;
         cardNumberCheck = "";
         // reset variable 'playerStatut' et 'bet check'
         resetVariablesTrue(playerStatut, betCheck);
+        // reset variable check nombre de clic 
+        NumberOfClick = 0
         // Affichage => retrait des éléments de jeu 
+        removePopup();
+        cardsReset();
         removeBet();
         removeCard();
         removeLife();
-        cardsReset();
         // Affichage => apparition des éléments mises 
         showBlocChooseBet();
         // Affichage => Selection j1
