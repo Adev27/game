@@ -1,4 +1,4 @@
-import { removeLife, removeBet, removeCard, cardsReset, showBlocChooseBet, playerSelect, showCard, removeBlocChooseBet, showLife, showNextRoundBtn, showBet, showPopup, removePopup } from "./displayFunctions.js";
+import { removeLife, removeBet, removeCard, cardsReset, showBlocChooseBet, playerSelect, showCard, removeBlocChooseBet, showLife, showNextRoundBtn, showBet, showPopup, removePopup, nextRoundBtnAvailable, nextRoundBtnDisable } from "./displayFunctions.js";
 import { validationBtnReset, resetVariablesTrue, betValidation, randomPlayer, randomnumber } from "./tools.js";
 
 
@@ -201,11 +201,9 @@ const mainGame = () => {
 
     // ----------------------------------------Fin de round en cas de tirage balle 
     const endRound = () => {
-        setTimeout(cardsReset, 2000);
+        // setTimeout(cardsReset, 1500);
         p1Bet = 0;
         p2Bet = 0;
-        document.getElementById('btnNextRound').classList.add('btnNextRound');
-        document.getElementById('btnNextRound').classList.remove('avoidClick');
         document.getElementById('cards').classList.add('avoidClick');
         if (actualPlayer === 1) {
             j1Lifes--;
@@ -226,6 +224,7 @@ const mainGame = () => {
             document.getElementById('popupP').innerHTML = 'Player 1 winner !';
             return
         }
+        setTimeout(nextRoundBtnAvailable, 3000);
     };
 
     // ---------------------------------------Fin de round mises = 0 
@@ -234,11 +233,11 @@ const mainGame = () => {
         if (p1Bet > 0 || p2Bet > 0) {
             return
         }
+        setTimeout(cardsReset, 1500);
         p1Bet = 0;
         p2Bet = 0;
         document.getElementById('cards').classList.add('avoidClick');
-        document.getElementById('btnNextRound').classList.add('btnNextRound');
-        document.getElementById('btnNextRound').classList.remove('avoidClick');
+        setTimeout(nextRoundBtnAvailable, 3000);
         setTimeout(showPopup, 1000);
         document.getElementById('popupP').innerHTML = 'End of the round !';
     };
@@ -378,8 +377,9 @@ const mainGame = () => {
         // reset variable check nombre de clic 
         NumberOfClick = 0
         // Affichage => retrait des éléments de jeu 
+        nextRoundBtnDisable();
         removePopup();
-        cardsReset();
+        // cardsReset();
         removeBet();
         removeCard();
         removeLife();
