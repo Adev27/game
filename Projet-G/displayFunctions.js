@@ -59,16 +59,7 @@ const cardsReset = () => {
     document.getElementById('card9').classList.remove('cardAnim');
     document.getElementById('card10').classList.remove('cardAnim');
 
-    card1.value = true;
-    card2.value = true;
-    card3.value = true;
-    card4.value = true;
-    card5.value = true;
-    card6.value = true;
-    card7.value = true;
-    card8.value = true;
-    card9.value = true;
-    card10.value = true;
+  
 };
 
 const showBlocChooseBet = () => {
@@ -108,7 +99,14 @@ const showNextRoundBtn = () => {
 
 const showBet = () => {
     document.getElementById('showBet').classList.remove('none');
-}
+};
 
+const showPopup = () => {
+    document.getElementById('popup').classList.remove('none');
+};
 
-export { removeLife, removeBet, removeCard, cardsReset, showBlocChooseBet, playerSelect, showCard, removeBlocChooseBet, showLife, showNextRoundBtn, showBet };
+const removePopup = () => { 
+    document.getElementById('popup').classList.add('none');
+};
+
+export { removeLife, removeBet, removeCard, cardsReset, showBlocChooseBet, playerSelect, showCard, removeBlocChooseBet, showLife, showNextRoundBtn, showBet, showPopup, removePopup };
