@@ -69,8 +69,8 @@ input:focus-visible {
   justify-content: center;
   align-content: center;
   position: relative;
-  margin-bottom: 10%;
-  margin-top: 5%
+  margin-top: 5%;
+  margin-bottom: 0%;
 }
 
 .j1 {
@@ -456,8 +456,8 @@ input:focus-visible {
   z-index: 10;
   perspective: 2000px;
   perspective-origin: top;
-  width: 41%;
-  height: 33%;
+  width: 40%;
+  height: 32%;
   margin-left: 5%;
   display: flex;
   justify-content: center;
@@ -561,8 +561,8 @@ input:focus-visible {
   z-index: 9;
   perspective: 2000px;
   perspective-origin: top;
-  width: 41%;
-  height: 33%;
+  width: 40%;
+  height: 32%;
   margin-left: 5%;
   display: flex;
   justify-content: center;
@@ -579,8 +579,8 @@ input:focus-visible {
   z-index: 8;
   perspective: 2000px;
   perspective-origin: top;
-  width: 41%;
-  height: 33%;
+  width: 40%;
+  height: 32%;
   margin-left: 5%;
   display: flex;
   justify-content: center;
@@ -597,8 +597,8 @@ input:focus-visible {
   z-index: 7;
   perspective: 2000px;
   perspective-origin: top;
-  width: 41%;
-  height: 33%;
+  width: 40%;
+  height: 32%;
   margin-left: 5%;
   display: flex;
   justify-content: center;
@@ -615,8 +615,8 @@ input:focus-visible {
   z-index: 6;
   perspective: 2000px;
   perspective-origin: top;
-  width: 41%;
-  height: 33%;
+  width: 40%;
+  height: 32%;
   margin-left: 5%;
   display: flex;
   justify-content: center;
@@ -633,8 +633,8 @@ input:focus-visible {
   z-index: 5;
   perspective: 2000px;
   perspective-origin: top;
-  width: 41%;
-  height: 33%;
+  width: 40%;
+  height: 32%;
   margin-left: 5%;
   display: flex;
   justify-content: center;
@@ -651,8 +651,8 @@ input:focus-visible {
   z-index: 4;
   perspective: 2000px;
   perspective-origin: top;
-  width: 41%;
-  height: 33%;
+  width: 40%;
+  height: 32%;
   margin-left: 5%;
   display: flex;
   justify-content: center;
@@ -669,8 +669,8 @@ input:focus-visible {
   z-index: 3;
   perspective: 2000px;
   perspective-origin: top;
-  width: 41%;
-  height: 33%;
+  width: 40%;
+  height: 32%;
   margin-left: 5%;
   display: flex;
   justify-content: center;
@@ -687,8 +687,8 @@ input:focus-visible {
   z-index: 2;
   perspective: 2000px;
   perspective-origin: top;
-  width: 41%;
-  height: 33%;
+  width: 40%;
+  height: 32%;
   margin-left: 5%;
   display: flex;
   justify-content: center;
@@ -705,8 +705,8 @@ input:focus-visible {
   z-index: 1;
   perspective: 2000px;
   perspective-origin: top;
-  width: 41%;
-  height: 33%;
+  width: 40%;
+  height: 32%;
   margin-left: 5%;
   display: flex;
   justify-content: center;
